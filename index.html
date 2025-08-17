@@ -1,86 +1,217 @@
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Mail, Github, Linkedin } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Santhosh Boopathi | Cloud Engineer</title>
+  <meta name="description" content="Portfolio of Santhosh Boopathi — Cloud Engineer & DevOps Enthusiast" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg-1:#0b1020; --bg-2:#0f1a3a; --card:#121a33; --muted:#94a3b8;
+      --pri:#7c3aed; --sec:#06b6d4; --acc:#f43f5e; --lime:#84cc16; --amber:#f59e0b;
+      --radius:16px; --shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial;line-height:1.6;color:#e5e7eb;background:radial-gradient(1200px 600px at 10% -10%, #18244a, transparent),radial-gradient(900px 500px at 110% 10%, #201545, transparent),linear-gradient(180deg, var(--bg-2), var(--bg-1));}
 
-export default function Portfolio() {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-6 py-12 space-y-20">
-      
-      {/* Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-center"
-      >
-        <h1 className="text-5xl font-bold">Santhosh Boopathi</h1>
-        <p className="text-xl mt-3 text-gray-400">
-          Cloud Engineer | DevOps Enthusiast
-        </p>
-      </motion.div>
+    /* floating glow orbs */
+    .glow{position:fixed;inset:0;z-index:-1;overflow:hidden;filter:blur(60px);opacity:.5;}
+    .glow span{position:absolute;border-radius:50%;mix-blend-mode:screen;animation:float 18s linear infinite;}
+    .glow .g1{background:conic-gradient(from 90deg,#6d28d9,#22d3ee,#fb7185,#6d28d9);width:420px;height:420px;left:-80px;top:-60px;}
+    .glow .g2{background:radial-gradient(circle at 30% 30%,#22d3ee,transparent 60%);width:520px;height:520px;right:-120px;top:120px;animation-duration:22s}
+    .glow .g3{background:radial-gradient(circle at 50% 50%,#f59e0b,transparent 60%);width:380px;height:380px;left:40%;bottom:-120px;animation-duration:26s}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-30px)}100%{transform:translateY(0)}}
 
-      {/* Story Section */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="max-w-3xl mx-auto text-center"
-      >
-        <h2 className="text-3xl font-semibold mb-6 text-indigo-400">My Journey</h2>
-        <p className="text-lg leading-relaxed text-gray-300">
-          Every journey has a turning point. Mine came right after my graduation in Electronics and Communication, when I stepped into my first company with big dreams. What awaited me was not the growth I had imagined, but long hours, stress, and an environment that didn’t feel right. One afternoon, unable to even finish my lunch, I called my parents and said, <span className="italic text-indigo-300">“I can’t do this anymore.”</span>
-        </p>
-        <p className="mt-4 text-lg text-gray-300">
-          That decision to walk away was not a failure — it was the moment I learned what truly matters. It taught me resilience, self-belief, and the importance of finding the right environment to grow.
-        </p>
-        <p className="mt-4 text-lg text-gray-300">
-          I turned that struggle into strength, upskilled myself in DevOps and Cloud technologies, and kept moving forward. Today, I work as a Cloud Engineer, passionate about solving problems, building scalable solutions, and never giving up on learning.
-        </p>
-        <p className="mt-6 text-xl font-semibold text-green-400">
-          Success is not about never falling — it’s about rising stronger every time. 🌱
-        </p>
-      </motion.section>
+    /* nav */
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(8,12,28,.8),rgba(8,12,28,.35));border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .brand{font-weight:800;font-size:1.1rem;letter-spacing:.5px;background:linear-gradient(90deg,var(--pri),var(--sec));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .links a{color:#cbd5e1;text-decoration:none;margin:0 10px;padding:8px 12px;border-radius:999px;transition:.25s ease;background:transparent}
+    .links a:hover{color:white;background:linear-gradient(90deg,rgba(124,58,237,.18),rgba(6,182,212,.18))}
 
-      {/* Skills Section */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="max-w-5xl mx-auto"
-      >
-        <h2 className="text-3xl font-semibold text-center mb-8 text-indigo-400">Technical Skills</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {["AWS", "Docker", "Kubernetes", "Terraform", "Jenkins", "Linux"].map(skill => (
-            <Card key={skill} className="bg-gray-800 border border-gray-700 hover:scale-105 transition-transform">
-              <CardContent className="p-6 text-center text-lg font-medium">
-                {skill}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </motion.section>
+    /* hero */
+    .hero{max-width:1100px;margin:48px auto 0;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:0 20px}
+    .title{font-size:clamp(32px,6vw,56px);line-height:1.15;margin:0;font-weight:800;background:linear-gradient(90deg,#fff, #d1d5db 30%, #c084fc 60%, #22d3ee 80%, #fff);background-size:300% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 9s linear infinite}
+    @keyframes shine{to{background-position:300% center}}
+    .tag{color:#a5b4fc;font-weight:600;margin-top:6px}
+    .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{border:none;border-radius:999px;padding:12px 18px;font-weight:600;cursor:pointer;transition:.25s;box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(90deg,var(--pri),var(--sec));color:white}
+    .btn.primary:hover{transform:translateY(-2px)}
+    .btn.ghost{background:transparent;color:#e5e7eb;border:1px solid rgba(255,255,255,.2)}
+    .btn.ghost:hover{border-color:transparent;background:linear-gradient(90deg,rgba(124,58,237,.2),rgba(6,182,212,.2))}
+    .hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:22px}
 
-      {/* Contact Section */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="text-center"
-      >
-        <h2 className="text-3xl font-semibold mb-6 text-indigo-400">Get in Touch</h2>
-        <div className="flex justify-center gap-6">
-          <Button asChild variant="outline" className="rounded-full hover:bg-indigo-500 hover:text-white">
-            <a href="mailto:b.santhosh2682002@gmail.com"><Mail className="mr-2"/> Email</a>
-          </Button>
-          <Button asChild variant="outline" className="rounded-full hover:bg-indigo-500 hover:text-white">
-            <a href="https://github.com/santhosh-Boopathi" target="_blank"><Github className="mr-2"/> GitHub</a>
-          </Button>
-          <Button asChild variant="outline" className="rounded-full hover:bg-indigo-500 hover:text-white">
-            <a href="https://www.linkedin.com/in/santhosh-boopathi/" target="_blank"><Linkedin className="mr-2"/> LinkedIn</a>
-          </Button>
-        </div>
-      </motion.section>
+    /* sections */
+    section{scroll-margin-top:80px}
+    .section{max-width:1100px;margin:80px auto;padding:0 20px}
+    .headline{font-size:clamp(22px,3.6vw,32px);font-weight:800;margin:0 0 20px;color:#e2e8f0}
+    .sub{color:var(--muted);max-width:860px}
+
+    /* cards grid */
+    .grid{display:grid;gap:18px}
+    .grid.skills{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+    .chip{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.09);padding:16px;border-radius:14px;text-align:center;font-weight:600;transition:.25s ease;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+    .chip:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 14px 30px rgba(0,0,0,.45)}
+
+    .grid.projects{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);padding:20px;transition:.25s;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+    .card:before{content:"";position:absolute;inset:-1px;border-radius:inherit;background:conic-gradient(from 180deg,transparent,rgba(124,58,237,.35),rgba(6,182,212,.35),rgba(244,63,94,.35),transparent);filter:blur(20px);opacity:0;transition:.35s}
+    .card:hover{transform:translateY(-6px)}
+    .card:hover:before{opacity:1}
+    .card h3{margin:4px 0 8px;font-size:1.1rem}
+    .card p{color:#cbd5e1}
+    .card a{display:inline-block;margin-top:10px;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--pri),var(--acc));padding:8px 12px;border-radius:999px;font-weight:600}
+
+    /* contact */
+    .contact-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .contact-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px}
+    .contact-box a{color:#e2e8f0;text-decoration:none}
+    .contact-box a:hover{color:#fff}
+
+    /* footer */
+    footer{border-top:1px solid rgba(255,255,255,.08);padding:28px 20px;text-align:center;color:#cbd5e1}
+
+    /* reveal */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="glow" aria-hidden="true">
+    <span class="g1"></span><span class="g2"></span><span class="g3"></span>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Santhosh • Cloud & DevOps</div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#extras">Extras</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
-  );
-}
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-card reveal">
+      <h1 class="title">Santhosh Boopathi</h1>
+      <div class="tag">Cloud Engineer • DevOps Enthusiast</div>
+      <p class="sub" style="margin-top:12px">I design, build and automate cloud infrastructure with a focus on reliability and elegance. From EC2 to EKS, from pipelines to production — I love turning ideas into resilient systems.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See Projects</a>
+        <a class="btn ghost" href="#contact">Contact Me</a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="card" style="height:100%;display:flex;flex-direction:column;gap:10px;justify-content:center">
+        <h3 style="color:#a5b4fc">My Journey</h3>
+        <p>Every journey has a turning point. Mine came right after my graduation in Electronics and Communication, when I stepped into my first company with big dreams. What awaited me was not the growth I had imagined, but long hours, stress, and an environment that didn’t feel right. One afternoon, unable to even finish my lunch, I called my parents and said, <em>“I can’t do this anymore.”</em></p>
+        <p>That decision to walk away was not a failure — it was the moment I learned what truly matters. It taught me resilience, self-belief, and the importance of finding the right environment to grow.</p>
+        <p>I turned that struggle into strength, upskilled myself in DevOps and Cloud technologies, and kept moving forward. Today, I work as a Cloud Engineer, passionate about solving problems, building scalable solutions, and never giving up on learning.</p>
+        <p style="font-weight:700;color:#86efac">Success is not about never falling — it’s about rising stronger every time. 🌱</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <h2 class="headline">About Me</h2>
+    <p class="sub">Cloud Engineer with a taste for clean architectures, observability, and automation. I enjoy crafting scalable systems on AWS, container orchestration with Kubernetes, and CI/CD pipelines that make shipping reliable and fast.</p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <h2 class="headline">Technical Skills</h2>
+    <div class="grid skills reveal">
+      <div class="chip">AWS</div>
+      <div class="chip">Linux</div>
+      <div class="chip">Docker</div>
+      <div class="chip">Kubernetes</div>
+      <div class="chip">Terraform</div>
+      <div class="chip">Jenkins</div>
+      <div class="chip">Git & GitHub</div>
+      <div class="chip">Ansible</div>
+      <div class="chip">Networking</div>
+      <div class="chip">Monitoring & Logs</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <h2 class="headline">Projects</h2>
+    <p class="sub" style="margin-bottom:16px">A few things I loved building and breaking (so they could come back stronger).</p>
+    <div class="grid projects reveal">
+      <div class="card">
+        <h3>WordPress on AWS</h3>
+        <p>Deployed WordPress with EC2 + RDS in a VPC, added SSL, and automated backups.</p>
+        <a href="https://github.com/santhosh-Boopathi" target="_blank" rel="noreferrer">View Repo</a>
+      </div>
+      <div class="card">
+        <h3>EKS Cluster with eksctl</h3>
+        <p>Production-ready EKS with custom VPC, node groups, autoscaling, and observability basics.</p>
+        <a href="https://github.com/santhosh-Boopathi" target="_blank" rel="noreferrer">View Repo</a>
+      </div>
+      <div class="card">
+        <h3>Apache Log Rotation</h3>
+        <p>Hourly rotation & compression with S3 archival using scripts and cron — zero manual ops.</p>
+        <a href="https://github.com/santhosh-Boopathi" target="_blank" rel="noreferrer">View Repo</a>
+      </div>
+      <div class="card">
+        <h3>Two Apache Virtual Hosts + SSL</h3>
+        <p>Configured vhosts on EC2 with Let’s Encrypt & HTTPS redirection, hardened with security headers.</p>
+        <a href="https://github.com/santhosh-Boopathi" target="_blank" rel="noreferrer">View Repo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRAS -->
+  <section id="extras" class="section">
+    <h2 class="headline">Extras & Fun Bits</h2>
+    <div class="grid projects reveal">
+      <div class="card">
+        <h3>Fun Fact</h3>
+        <p>I love turning chaotic logs into calm dashboards. Observability is my kind of art.</p>
+      </div>
+      <div class="card">
+        <h3>Goal</h3>
+        <p>Build a fully automated, self-healing infra that scales like magic and costs like a bike ride.</p>
+      </div>
+      <div class="card">
+        <h3>Now Learning</h3>
+        <p>Diving deeper into GitHub Actions, ArgoCD, and cost-optimized architectures on AWS.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <h2 class="headline">Get in Touch</h2>
+    <div class="contact-wrap reveal">
+      <div class="contact-box"><strong>Email</strong><br><a href="mailto:b.santhosh2682002@gmail.com">b.santhosh2682002@gmail.com</a></div>
+      <div class="contact-box"><strong>LinkedIn</strong><br><a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/santhosh-boopathi/">linkedin.com/in/santhosh-boopathi</a></div>
+      <div class="contact-box"><strong>GitHub</strong><br><a target="_blank" rel="noreferrer" href="https://github.com/santhosh-Boopathi">github.com/santhosh-Boopathi</a></div>
+    </div>
+  </section>
+
+  <footer>© 2025 Santhosh Boopathi • Built with 💙, CSS and a pinch of JavaScript</footer>
+
+  <script>
+    // reveal on scroll
+    const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}})},{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  </script>
+</body>
+</html>
