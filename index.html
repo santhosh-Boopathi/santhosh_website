@@ -3,64 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Santhosh Boopathi | Cloud Engineer</title>
+  <title>Santhosh Boopathi | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-      color: #333;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      line-height: 1.6;
     }
+
     header {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: white;
-      padding: 40px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 0 20px;
     }
+
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-size: 3rem;
+      font-weight: 600;
+      animation: fadeInDown 1s ease;
     }
-    header p {
-      font-size: 1.2rem;
+
+    header h2 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #ffd369;
       margin-top: 10px;
     }
+
+    header p {
+      max-width: 700px;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: #eee;
+      animation: fadeInUp 1s ease;
+    }
+
     section {
-      padding: 50px 20px;
-      max-width: 900px;
+      padding: 60px 20px;
+      max-width: 1000px;
       margin: auto;
     }
-    h2 {
-      border-bottom: 3px solid #2575fc;
-      display: inline-block;
+
+    h3 {
+      font-size: 2rem;
       margin-bottom: 20px;
+      text-align: center;
+      color: #ffd369;
     }
-    .skills, .projects {
+
+    .skills, .projects, .contact {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
-    .card {
-      background: white;
-      border-radius: 10px;
+
+    .skills div, .projects div, .contact div {
+      background: rgba(255, 255, 255, 0.1);
       padding: 20px;
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      border-radius: 12px;
+      transition: transform 0.3s, background 0.3s;
     }
-    .card:hover {
-      transform: translateY(-5px);
-      background: #f0f8ff;
+
+    .skills div:hover, .projects div:hover, .contact div:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.2);
     }
+
     footer {
       text-align: center;
       padding: 20px;
-      background: #2575fc;
-      color: white;
+      background: rgba(0,0,0,0.3);
     }
+
     a {
-      color: white;
+      color: #ffd369;
       text-decoration: none;
       font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -68,58 +111,34 @@
 
   <header>
     <h1>Santhosh Boopathi</h1>
-    <p>Cloud Engineer | DevOps Enthusiast</p>
+    <h2>Cloud Engineer | DevOps Enthusiast</h2>
+    <p>From Electronics and Communication graduate to passionate DevOps Engineer — my journey has been about building, automating, and scaling modern infrastructures. After navigating challenges, exploring AWS, Docker, Kubernetes, Terraform, and beyond, I’m now crafting my story in the cloud world.</p>
   </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      Hey, I’m Santhosh. My journey started with Electronics and Communication, where curiosity led me deeper into
-      Networking and Linux. Over time, I transitioned into the world of Cloud & DevOps. From struggling with my first
-      EC2 instance to deploying entire infrastructures, every step shaped me. Today, I continue to learn, build, and
-      solve real-world problems in Cloud Engineering.
-    </p>
+  <section class="skills">
+    <h3>Technical Skills</h3>
+    <div>AWS, Linux, Networking</div>
+    <div>Docker, Kubernetes</div>
+    <div>Terraform, Jenkins, GitHub</div>
+    <div>Ansible (learning stage)</div>
   </section>
 
-  <section>
-    <h2>Technical Skills</h2>
-    <div class="skills">
-      <div class="card">AWS</div>
-      <div class="card">Linux</div>
-      <div class="card">Docker</div>
-      <div class="card">Kubernetes</div>
-      <div class="card">Terraform</div>
-      <div class="card">Jenkins</div>
-      <div class="card">Git & GitHub</div>
-      <div class="card">Ansible (Basics)</div>
-    </div>
+  <section class="projects">
+    <h3>Projects</h3>
+    <div>✔ Hosted a WordPress site using EC2, RDS, and private/public subnets</div>
+    <div>✔ Configured Apache virtual hosts with SSL certificates</div>
+    <div>✔ Automated infrastructure using Terraform and GitHub Actions</div>
   </section>
 
-  <section>
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card">🚀 WordPress on AWS with RDS</div>
-      <div class="card">⚡ CI/CD Pipeline with Jenkins</div>
-      <div class="card">☸️ Kubernetes EKS Cluster Setup</div>
-      <div class="card">📦 Dockerized Web Apps</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Exciting Things</h2>
-    <p>I enjoy solving problems, automating workflows, and experimenting with new tools. One exciting goal of mine is to
-      build a fully automated infrastructure where servers heal, scale, and adapt—almost like they’re alive! 🚀</p>
-  </section>
-
-  <section>
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:b.santhosh2682002@gmail.com">b.santhosh2682002@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/santhosh-boopathi" target="_blank">My LinkedIn</a></p>
-    <p>GitHub: <a href="https://github.com/santhosh-Boopathi" target="_blank">My GitHub</a></p>
+  <section class="contact">
+    <h3>Contact</h3>
+    <div>Email: <a href="mailto:b.santhosh2682002@gmail.com">b.santhosh2682002@gmail.com</a></div>
+    <div>LinkedIn: <a href="https://www.linkedin.com/in/santhosh-boopathi" target="_blank">linkedin.com/in/santhosh-boopathi</a></div>
+    <div>GitHub: <a href="https://github.com/santhosh-Boopathi" target="_blank">github.com/santhosh-Boopathi</a></div>
   </section>
 
   <footer>
-    <p>© 2025 Santhosh Boopathi | Built with 💙</p>
+    <p>© 2025 Santhosh Boopathi |</p>
   </footer>
 
 </body>
