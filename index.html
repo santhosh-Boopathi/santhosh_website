@@ -5,153 +5,82 @@ import { Mail, Github, Linkedin } from "lucide-react";
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white p-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white px-6 py-12 space-y-20">
+      
       {/* Header */}
-      <motion.div
+      <motion.div 
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-16"
+        className="text-center"
       >
-        <h1 className="text-5xl font-extrabold text-indigo-400 mb-2 hover:text-pink-400 transition-colors">
-          Santhosh Boopathi
-        </h1>
-        <p className="text-xl text-gray-300 hover:text-indigo-300 transition-colors">
+        <h1 className="text-5xl font-bold">Santhosh Boopathi</h1>
+        <p className="text-xl mt-3 text-gray-400">
           Cloud Engineer | DevOps Enthusiast
         </p>
       </motion.div>
 
       {/* Story Section */}
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="max-w-3xl mx-auto mb-20"
+        className="max-w-3xl mx-auto text-center"
       >
-        <Card className="bg-slate-800/80 shadow-xl hover:shadow-indigo-500/40 transition-shadow rounded-2xl">
-          <CardContent className="p-6 space-y-4 text-lg leading-relaxed text-gray-200">
-            <h2 className="text-2xl font-semibold text-indigo-300 mb-4">
-              My Journey
-            </h2>
-            <p>
-              Every journey has a turning point. Mine came right after my
-              graduation in Electronics and Communication, when I stepped into
-              my first company with big dreams. What awaited me was not the
-              growth I had imagined, but long hours, stress, and an environment
-              that didn’t feel right. One afternoon, unable to even finish my
-              lunch, I called my parents and said, <em>“I can’t do this
-              anymore.”</em>
-            </p>
-            <p>
-              That decision to walk away was not a failure — it was the moment I
-              learned what truly matters. It taught me resilience, self-belief,
-              and the importance of finding the right environment to grow.
-            </p>
-            <p>
-              I turned that struggle into strength, upskilled myself in DevOps
-              and Cloud technologies, and kept moving forward. Today, I work as
-              a Cloud Engineer, passionate about solving problems, building
-              scalable solutions, and never giving up on learning.
-            </p>
-            <p className="font-semibold text-indigo-300">
-              Success is not about never falling — it’s about rising stronger
-              every time. 🌱
-            </p>
-          </CardContent>
-        </Card>
-      </motion.div>
+        <h2 className="text-3xl font-semibold mb-6 text-indigo-400">My Journey</h2>
+        <p className="text-lg leading-relaxed text-gray-300">
+          Every journey has a turning point. Mine came right after my graduation in Electronics and Communication, when I stepped into my first company with big dreams. What awaited me was not the growth I had imagined, but long hours, stress, and an environment that didn’t feel right. One afternoon, unable to even finish my lunch, I called my parents and said, <span className="italic text-indigo-300">“I can’t do this anymore.”</span>
+        </p>
+        <p className="mt-4 text-lg text-gray-300">
+          That decision to walk away was not a failure — it was the moment I learned what truly matters. It taught me resilience, self-belief, and the importance of finding the right environment to grow.
+        </p>
+        <p className="mt-4 text-lg text-gray-300">
+          I turned that struggle into strength, upskilled myself in DevOps and Cloud technologies, and kept moving forward. Today, I work as a Cloud Engineer, passionate about solving problems, building scalable solutions, and never giving up on learning.
+        </p>
+        <p className="mt-6 text-xl font-semibold text-green-400">
+          Success is not about never falling — it’s about rising stronger every time. 🌱
+        </p>
+      </motion.section>
 
       {/* Skills Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="max-w-5xl mx-auto mb-20"
+        className="max-w-5xl mx-auto"
       >
-        <h2 className="text-3xl font-bold text-center text-pink-400 mb-10">
-          Technical Skills
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {["AWS", "Linux", "Terraform", "Docker", "Kubernetes", "Jenkins", "Git/GitHub", "Ansible"].map(
-            (skill, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ scale: 1.1 }}
-                className="bg-slate-800/70 p-4 rounded-xl shadow-md hover:shadow-pink-400/30 transition-all"
-              >
+        <h2 className="text-3xl font-semibold text-center mb-8 text-indigo-400">Technical Skills</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {["AWS", "Docker", "Kubernetes", "Terraform", "Jenkins", "Linux"].map(skill => (
+            <Card key={skill} className="bg-gray-800 border border-gray-700 hover:scale-105 transition-transform">
+              <CardContent className="p-6 text-center text-lg font-medium">
                 {skill}
-              </motion.div>
-            )
-          )}
-        </div>
-      </motion.div>
-
-      {/* Projects Section */}
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="max-w-5xl mx-auto mb-20"
-      >
-        <h2 className="text-3xl font-bold text-center text-indigo-400 mb-10">
-          Projects
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {[{
-            title: "EKS Cluster with eksctl",
-            desc: "Built a production-ready Kubernetes cluster with custom VPC, spot instances, and autoscaling.",
-          },{
-            title: "WordPress on AWS",
-            desc: "Deployed WordPress with EC2, RDS, and Nginx, secured with SSL and automated DNS configs.",
-          },{
-            title: "Apache Log Rotation",
-            desc: "Configured hourly log rotation with compression, S3 upload, and archival logic using custom scripts.",
-          },{
-            title: "Two Apache Virtual Hosts with SSL",
-            desc: "Configured multiple vhosts on EC2 with Let's Encrypt SSL and HTTPS redirection.",
-          }].map((proj, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.05 }}
-              className="bg-slate-800/70 p-6 rounded-2xl shadow-md hover:shadow-indigo-400/40 transition-all"
-            >
-              <h3 className="text-xl font-semibold text-pink-300 mb-2">{proj.title}</h3>
-              <p className="text-gray-300">{proj.desc}</p>
-            </motion.div>
+              </CardContent>
+            </Card>
           ))}
         </div>
-      </motion.div>
+      </motion.section>
 
       {/* Contact Section */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        viewport={{ once: true }}
         className="text-center"
       >
-        <h2 className="text-3xl font-bold text-pink-400 mb-6">Get in Touch</h2>
+        <h2 className="text-3xl font-semibold mb-6 text-indigo-400">Get in Touch</h2>
         <div className="flex justify-center gap-6">
-          <a href="mailto:b.santhosh2682002@gmail.com" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-indigo-600 hover:bg-pink-500 rounded-full p-4">
-              <Mail className="w-5 h-5" />
-            </Button>
-          </a>
-          <a href="https://github.com/santhosh-Boopathi" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-indigo-600 hover:bg-pink-500 rounded-full p-4">
-              <Github className="w-5 h-5" />
-            </Button>
-          </a>
-          <a href="https://www.linkedin.com/in/santhosh-boopathi/" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-indigo-600 hover:bg-pink-500 rounded-full p-4">
-              <Linkedin className="w-5 h-5" />
-            </Button>
-          </a>
+          <Button asChild variant="outline" className="rounded-full hover:bg-indigo-500 hover:text-white">
+            <a href="mailto:b.santhosh2682002@gmail.com"><Mail className="mr-2"/> Email</a>
+          </Button>
+          <Button asChild variant="outline" className="rounded-full hover:bg-indigo-500 hover:text-white">
+            <a href="https://github.com/santhosh-Boopathi" target="_blank"><Github className="mr-2"/> GitHub</a>
+          </Button>
+          <Button asChild variant="outline" className="rounded-full hover:bg-indigo-500 hover:text-white">
+            <a href="https://www.linkedin.com/in/santhosh-boopathi/" target="_blank"><Linkedin className="mr-2"/> LinkedIn</a>
+          </Button>
         </div>
-      </motion.div>
+      </motion.section>
     </div>
   );
 }
