@@ -1,145 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Santhosh Boopathi | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Mail, Github, Linkedin } from "lucide-react";
 
-    body {
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
-      color: #fff;
-      line-height: 1.6;
-    }
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white p-8">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-16"
+      >
+        <h1 className="text-5xl font-extrabold text-indigo-400 mb-2 hover:text-pink-400 transition-colors">
+          Santhosh Boopathi
+        </h1>
+        <p className="text-xl text-gray-300 hover:text-indigo-300 transition-colors">
+          Cloud Engineer | DevOps Enthusiast
+        </p>
+      </motion.div>
 
-    header {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-    }
+      {/* Story Section */}
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="max-w-3xl mx-auto mb-20"
+      >
+        <Card className="bg-slate-800/80 shadow-xl hover:shadow-indigo-500/40 transition-shadow rounded-2xl">
+          <CardContent className="p-6 space-y-4 text-lg leading-relaxed text-gray-200">
+            <h2 className="text-2xl font-semibold text-indigo-300 mb-4">
+              My Journey
+            </h2>
+            <p>
+              Every journey has a turning point. Mine came right after my
+              graduation in Electronics and Communication, when I stepped into
+              my first company with big dreams. What awaited me was not the
+              growth I had imagined, but long hours, stress, and an environment
+              that didn’t feel right. One afternoon, unable to even finish my
+              lunch, I called my parents and said, <em>“I can’t do this
+              anymore.”</em>
+            </p>
+            <p>
+              That decision to walk away was not a failure — it was the moment I
+              learned what truly matters. It taught me resilience, self-belief,
+              and the importance of finding the right environment to grow.
+            </p>
+            <p>
+              I turned that struggle into strength, upskilled myself in DevOps
+              and Cloud technologies, and kept moving forward. Today, I work as
+              a Cloud Engineer, passionate about solving problems, building
+              scalable solutions, and never giving up on learning.
+            </p>
+            <p className="font-semibold text-indigo-300">
+              Success is not about never falling — it’s about rising stronger
+              every time. 🌱
+            </p>
+          </CardContent>
+        </Card>
+      </motion.div>
 
-    header h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      animation: fadeInDown 1s ease;
-    }
+      {/* Skills Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="max-w-5xl mx-auto mb-20"
+      >
+        <h2 className="text-3xl font-bold text-center text-pink-400 mb-10">
+          Technical Skills
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {["AWS", "Linux", "Terraform", "Docker", "Kubernetes", "Jenkins", "Git/GitHub", "Ansible"].map(
+            (skill, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.1 }}
+                className="bg-slate-800/70 p-4 rounded-xl shadow-md hover:shadow-pink-400/30 transition-all"
+              >
+                {skill}
+              </motion.div>
+            )
+          )}
+        </div>
+      </motion.div>
 
-    header h2 {
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: #ffd369;
-      margin-top: 10px;
-    }
+      {/* Projects Section */}
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="max-w-5xl mx-auto mb-20"
+      >
+        <h2 className="text-3xl font-bold text-center text-indigo-400 mb-10">
+          Projects
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {[{
+            title: "EKS Cluster with eksctl",
+            desc: "Built a production-ready Kubernetes cluster with custom VPC, spot instances, and autoscaling.",
+          },{
+            title: "WordPress on AWS",
+            desc: "Deployed WordPress with EC2, RDS, and Nginx, secured with SSL and automated DNS configs.",
+          },{
+            title: "Apache Log Rotation",
+            desc: "Configured hourly log rotation with compression, S3 upload, and archival logic using custom scripts.",
+          },{
+            title: "Two Apache Virtual Hosts with SSL",
+            desc: "Configured multiple vhosts on EC2 with Let's Encrypt SSL and HTTPS redirection.",
+          }].map((proj, idx) => (
+            <motion.div
+              key={idx}
+              whileHover={{ scale: 1.05 }}
+              className="bg-slate-800/70 p-6 rounded-2xl shadow-md hover:shadow-indigo-400/40 transition-all"
+            >
+              <h3 className="text-xl font-semibold text-pink-300 mb-2">{proj.title}</h3>
+              <p className="text-gray-300">{proj.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
 
-    header p {
-      max-width: 700px;
-      margin-top: 20px;
-      font-size: 1.1rem;
-      color: #eee;
-      animation: fadeInUp 1s ease;
-    }
-
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h3 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-      color: #ffd369;
-    }
-
-    .skills, .projects, .contact {
-      display: grid;
-      gap: 20px;
-    }
-
-    .skills div, .projects div, .contact div {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 12px;
-      transition: transform 0.3s, background 0.3s;
-    }
-
-    .skills div:hover, .projects div:hover, .contact div:hover {
-      transform: translateY(-8px);
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.3);
-    }
-
-    a {
-      color: #ffd369;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>Santhosh Boopathi</h1>
-    <h2>Cloud Engineer | DevOps Enthusiast</h2>
-    <p>From Electronics and Communication graduate to passionate DevOps Engineer — my journey has been about building, automating, and scaling modern infrastructures. After navigating challenges, exploring AWS, Docker, Kubernetes, Terraform, and beyond, I’m now crafting my story in the cloud world.</p>
-  </header>
-
-  <section class="skills">
-    <h3>Technical Skills</h3>
-    <div>AWS, Linux, Networking</div>
-    <div>Docker, Kubernetes</div>
-    <div>Terraform, Jenkins, GitHub</div>
-    <div>Ansible (learning stage)</div>
-  </section>
-
-  <section class="projects">
-    <h3>Projects</h3>
-    <div>✔ Hosted a WordPress site using EC2, RDS, and private/public subnets</div>
-    <div>✔ Configured Apache virtual hosts with SSL certificates</div>
-    <div>✔ Automated infrastructure using Terraform and GitHub Actions</div>
-  </section>
-
-  <section class="contact">
-    <h3>Contact</h3>
-    <div>Email: <a href="mailto:b.santhosh2682002@gmail.com">b.santhosh2682002@gmail.com</a></div>
-    <div>LinkedIn: <a href="https://www.linkedin.com/in/santhosh-boopathi" target="_blank">linkedin.com/in/santhosh-boopathi</a></div>
-    <div>GitHub: <a href="https://github.com/santhosh-Boopathi" target="_blank">github.com/santhosh-Boopathi</a></div>
-  </section>
-
-  <footer>
-    <p>© 2025 Santhosh Boopathi |</p>
-  </footer>
-
-</body>
-</html>
+      {/* Contact Section */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="text-center"
+      >
+        <h2 className="text-3xl font-bold text-pink-400 mb-6">Get in Touch</h2>
+        <div className="flex justify-center gap-6">
+          <a href="mailto:b.santhosh2682002@gmail.com" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-indigo-600 hover:bg-pink-500 rounded-full p-4">
+              <Mail className="w-5 h-5" />
+            </Button>
+          </a>
+          <a href="https://github.com/santhosh-Boopathi" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-indigo-600 hover:bg-pink-500 rounded-full p-4">
+              <Github className="w-5 h-5" />
+            </Button>
+          </a>
+          <a href="https://www.linkedin.com/in/santhosh-boopathi/" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-indigo-600 hover:bg-pink-500 rounded-full p-4">
+              <Linkedin className="w-5 h-5" />
+            </Button>
+          </a>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
